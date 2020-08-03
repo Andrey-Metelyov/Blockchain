@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Blockchain/task/Blockchain.Blockchain-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Check whether a number is prime/Blockchain.Problems-Check_whether_a_number_is_prime.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Messaging/Blockchain.Problems-Messaging.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Blockchain.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Blockchain.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Blockchain.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Blockchain.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Blockchain.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Blockchain.util.test.iml" />
+    </modules>
+  </component>
+</project>
