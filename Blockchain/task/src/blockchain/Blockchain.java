@@ -44,10 +44,10 @@ class Block {
     @Override
     public String toString() {
         return "Id: " + id +
-             "\nTimestamp: " + timestamp +
-             "\nMagic number: " + magic +
-             "\nHash of the previous block:\n" + hashPrevious +
-             "\nHash of the block:\n" + hash;
+                "\nTimestamp: " + timestamp +
+                "\nMagic number: " + magic +
+                "\nHash of the previous block:\n" + hashPrevious +
+                "\nHash of the block:\n" + hash;
 //                    "\nBlock was generating for " + (generationTime / 1000) + " seconds" +
     }
 
@@ -64,6 +64,10 @@ public class Blockchain {
     LinkedList<Block> blocks = new LinkedList<>();
     int zeroesNeeded = 0;
     long lastGenerationStartTimestamp;
+
+    public int size() {
+        return blocks.size();
+    }
 
     public static class BlockParameters {
         long id;
@@ -84,13 +88,15 @@ public class Blockchain {
         parameters.zeroesNeeded = zeroesNeeded;
         if (lastGenerationStartTimestamp == 0) {
             lastGenerationStartTimestamp = new Date().getTime();
+//            System.out.println("lastGenerationStartTimestamp = " + lastGenerationStartTimestamp);
         }
         return parameters;
     }
 
     private static final Blockchain instance = new Blockchain();
 
-    private Blockchain() { }
+    private Blockchain() {
+    }
 
     public static Blockchain getInstance() {
         return instance;
@@ -104,6 +110,7 @@ public class Blockchain {
             System.out.println(block.toString());
             long generationTime = block.timestamp - lastGenerationStartTimestamp;
             System.out.println("Block was generating for " + generationTime / 1000 + " seconds");
+//            System.out.println("Block was generating for " + generationTime + " ms");
             if (generationTime < 15_000) {
                 zeroesNeeded++;
                 System.out.println("N was increased to " + zeroesNeeded);
@@ -149,25 +156,20 @@ public class Blockchain {
 }
 
 class BlockGenerator implements Runnable {
-    private final long id;
-    private final String prevHash;
-    private final int zeroesNeeded;
 
-    public BlockGenerator(long id, String prevHash, int zeroesNeeded) {
-        this.id = id;
-        this.prevHash = prevHash;
-        this.zeroesNeeded = zeroesNeeded;
+    public BlockGenerator() {
     }
 
     @Override
     public void run() {
         String miner = Thread.currentThread().getName();
-        System.out.println("start generation " + miner + " id=" + id + " prevHash=" + prevHash + " zeroesNeeded=" + zeroesNeeded);
-        Block block = BlockchainUtil.generate(id, prevHash, zeroesNeeded);
         Blockchain blockchain = Blockchain.getInstance();
+        Blockchain.BlockParameters parameters = blockchain.getNextBlockParameters();
+//        System.out.println("start generation " + miner + " id=" + parameters.id + " prevHash=" + parameters.prevHash + " zeroesNeeded=" + parameters.zeroesNeeded);
+        Block block = BlockchainUtil.generate(parameters.id, parameters.prevHash, parameters.zeroesNeeded);
         if (blockchain.addBlock(miner, block)) {
 
         }
-        System.out.println("end generation " + miner);
+//        System.out.println("end generation " + miner);
     }
 }

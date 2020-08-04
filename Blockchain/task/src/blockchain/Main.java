@@ -9,16 +9,24 @@ public class Main {
         Blockchain blockchain = Blockchain.getInstance();
         int poolSize = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(poolSize);
-        for (int i = 0; i < 5; i++) {
+        do {
+            for (int i = 0; i < poolSize; i++) {
 //            System.out.println("get block");
-            Blockchain.BlockParameters parameters = blockchain.getNextBlockParameters();
-            executor.submit(new BlockGenerator(parameters.id, parameters.prevHash, parameters.zeroesNeeded));
+//            executor.submit(new BlockGenerator(parameters.id, parameters.prevHash, parameters.zeroesNeeded));
+                executor.submit(new BlockGenerator());
 //            executor.shutdown();
+            }
             try {
-                executor.awaitTermination(90, TimeUnit.SECONDS);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        } while (blockchain.size() < 5);
+        executor.shutdown();
+        try {
+            executor.awaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 //        executor.shutdown();
 //        System.out.println("wait");
