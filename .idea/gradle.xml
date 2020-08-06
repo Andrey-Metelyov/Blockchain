@@ -18,8 +18,10 @@
             <option value="$PROJECT_DIR$/Problems/Apply function to all elements" />
             <option value="$PROJECT_DIR$/Problems/Ascending and descending sorting" />
             <option value="$PROJECT_DIR$/Problems/Check whether a number is prime" />
+            <option value="$PROJECT_DIR$/Problems/Composing predicates" />
             <option value="$PROJECT_DIR$/Problems/Messaging" />
             <option value="$PROJECT_DIR$/Problems/Ternary operator" />
+            <option value="$PROJECT_DIR$/Problems/The chain of responsibility" />
             <option value="$PROJECT_DIR$/Problems/Which brackets are balanced" />
             <option value="$PROJECT_DIR$/util" />
           </set>

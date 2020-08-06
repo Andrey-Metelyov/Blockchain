@@ -1,0 +1,51 @@
+<b>The chain of responsibility</b> <a class=right href="https://hyperskill.org/learn/step/2408">Open on JetBrains Academy</a>
+<br><br>
+<html>
+ <head></head>
+ <body>
+  <h2 style="text-align: center;">Overview</h2> 
+  <p>The chain of responsibility pattern is an object-oriented design pattern that processes a request through a series of handlers (a chain). The request (or something else) is sent from one handler to another and processed by one or all of these handlers in the chain.</p> 
+  <p>In more detail: <a target="_blank" href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" rel="nofollow noopener noreferrer" title="Link: https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern">https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern</a></p> 
+  <p>Usually, to implement this design pattern the following classes and methods are created:</p> 
+  <ul> 
+   <li><strong>a general handler</strong> is an abstract class or interface with a method <strong>handle/process/etc</strong> and a method to set the next handler</li> 
+   <li>one or more <strong>concrete handlers </strong>that implement the general handler</li> 
+  </ul> 
+  <p>Using functional style we can implement it more simple. Instead of writing all concrete handlers we can write lambda expressions (or method references). For setting the next handler it's possible to use function composition in similar to functions way.</p> 
+  <h2 style="text-align: center;">Problem</h2> 
+  <p>There is a class <strong>Request(data: String) </strong>for representing some XML requests in a payment system. The class has a getter method <strong>getData()</strong> and a constructor with one argument (<strong>data)</strong>. See below.</p> 
+  <p>Typically, the value of <strong>data</strong> looks like shown below (in a human-readable format, in processing it's a single line string).</p> 
+  <pre><code class="language-java">&lt;request&gt;
+  &lt;transaction&gt;
+    &lt;type&gt;payment&lt;/type&gt;
+    &lt;sum&gt;100000&lt;/sum&gt;
+    &lt;order_id&gt;e94dc619-6172-4ffe-aae8-63112c551570&lt;/order&gt;
+    &lt;desc&gt;We'd like to buy an elephant&lt;/desc&gt;
+  &lt;/transaction&gt;
+  &lt;digest&gt;CZVMYTgc3iiOdJjFP+6dhQ==&lt;/digest&gt;
+&lt;/request&gt;</code></pre> 
+  <p><br> You should write <strong>the chain of responsibility pattern in functional style</strong> for stage-by-stage request creating.</p> 
+  <p>For this:</p> 
+  <p>1) write a functional interface <strong>RequestHandler</strong> with a single abstract method <strong>handle </strong>and a default method; the first is needed for using lambda expressions and should accept a Request and returns new Request with changed data, the second is for combining several handlers into the one.</p> 
+  <p>2) create a <strong>commonRequestHandler</strong> combined from three existing handlers: <strong>wrapInTransactionTag</strong>, <strong>createDigest</strong> and <strong>wrapInRequestTag</strong>.</p> 
+  <p> </p> 
+  <p><strong>Important. </strong>Use the provided template for your solution. Do not change it and read comments in the code. The template is long enough, scroll it to the bottom. <strong>All comments where your code is expected start with !!!</strong></p> 
+  <p> </p> 
+  <p>In the next step, you can read how the requests should be created. Keep in mind, all handlers with logic are already implemented and available for you. You need to write only a suitable functional interface and compose all existing handlers as functions into one <strong>commonRequestHandler</strong> to follow the described algorithm.</p> 
+  <h2 style="text-align: center;">The algorithm for creating a XML request</h2> 
+  <p><strong></strong>0) Initial request data looks like shown below (it contains only business data).</p> 
+  <pre><code class="language-java">&lt;type&gt;payment&lt;/type&gt;&lt;sum&gt;100000&lt;/sum&gt;&lt;order_id&gt;e94dc619-6172-4ffe-aae8-63112c551570&lt;/order&gt;&lt;desc&gt;We'd like to buy an elephant&lt;/desc&gt;</code></pre> 
+  <p>1) First, a tag <em>&lt;transaction&gt;...&lt;/transaction&gt;</em> is added as border of the data (data is wrapped in the tag). The result:</p> 
+  <pre><code class="language-java">&lt;transaction&gt;&lt;type&gt;payment&lt;/type&gt;&lt;sum&gt;100000&lt;/sum&gt;&lt;order_id&gt;e94dc619-6172-4ffe-aae8-63112c551570&lt;/order&gt;&lt;desc&gt;We'd like to buy an elephant&lt;/desc&gt;&lt;/transaction&gt;</code></pre> 
+  <p>2) Then, a digest (MD5) is calculated for entire data created on the previous stage and added as a new tag. The result:</p> 
+  <pre><code class="language-java">&lt;transaction&gt;&lt;type&gt;payment&lt;/type&gt;&lt;sum&gt;100000&lt;/sum&gt;&lt;order_id&gt;e94dc619-6172-4ffe-aae8-63112c551570&lt;/order&gt;&lt;desc&gt;We'd like to buy an elephant&lt;/desc&gt;&lt;/transaction&gt;&lt;digest&gt;CZVMYTgc3iiOdJjFP+6dhQ==&lt;/digest&gt;</code></pre> 
+  <p>3) After that, the data is wrapped in a tag <em>&lt;request&gt;...&lt;/request&gt;</em> as shown below. The request is completed.</p> 
+  <pre><code class="language-java">&lt;request&gt;&lt;transaction&gt;&lt;type&gt;payment&lt;/type&gt;&lt;sum&gt;100000&lt;/sum&gt;&lt;order_id&gt;e94dc619-6172-4ffe-aae8-
+63112c551570&lt;/order&gt;&lt;desc&gt;We'd like to buy an elephant&lt;/desc&gt;&lt;/transaction&gt;
+&lt;digest&gt;CZVMYTgc3iiOdJjFP+6dhQ==&lt;/digest&gt;&lt;/request&gt;</code></pre> 
+  <p>So, if you have a request data as shown in stage 0, the algorithm should generate the result as shown in stage 3.</p> 
+  <p>Note, each stage is already implemented for you in a specific <strong>RequestHandler</strong>.</p> 
+  <p></p>
+ </body>
+</html><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<a href="https://hyperskill.org/learn/step/3580">Show topic summary</a>

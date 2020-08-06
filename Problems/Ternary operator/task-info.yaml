@@ -18,5 +18,9 @@ files:
     }
   learner_created: false
 feedback_link: https://hyperskill.org/learn/step/2400
-status: Unchecked
+status: Solved
+feedback:
+  message: <html>Correct solution<br/><br/>Continue on <a href="https://hyperskill.org/learn/step/2400">JetBrains
+    Academy</a></html>
+  time: Thu, 06 Aug 2020 00:10:05 UTC
 record: -1
