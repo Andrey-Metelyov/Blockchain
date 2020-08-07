@@ -10,3 +10,6 @@ content:
 - Composing predicates
 - The chain of responsibility
 - String concatenation
+- Curried function
+- Reducer operator
+- Multifunctional mapper
