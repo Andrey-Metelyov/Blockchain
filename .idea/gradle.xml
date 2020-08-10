@@ -34,9 +34,15 @@
             <option value="$PROJECT_DIR$/Problems/Sum of divisors" />
             <option value="$PROJECT_DIR$/Problems/Ternary operator" />
             <option value="$PROJECT_DIR$/Problems/The address book" />
+            <option value="$PROJECT_DIR$/Problems/The average salary" />
             <option value="$PROJECT_DIR$/Problems/The chain of responsibility" />
             <option value="$PROJECT_DIR$/Problems/The product of squares" />
+            <option value="$PROJECT_DIR$/Problems/The sum of odd numbers" />
+            <option value="$PROJECT_DIR$/Problems/The ten most frequent words" />
+            <option value="$PROJECT_DIR$/Problems/The total number of employees" />
+            <option value="$PROJECT_DIR$/Problems/The total sum of canceled transactions" />
             <option value="$PROJECT_DIR$/Problems/The total sum of transaction by each account" />
+            <option value="$PROJECT_DIR$/Problems/Using streams many times" />
             <option value="$PROJECT_DIR$/Problems/Which brackets are balanced" />
             <option value="$PROJECT_DIR$/util" />
           </set>
