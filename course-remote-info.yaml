@@ -26,14 +26,16 @@ topics:
     theory_id: 7929
   - title: Computer algorithms
     theory_id: 4953
-  - title: The big O notation
-    theory_id: 4991
-  - title: Data structures
-    theory_id: 5161
   - title: Pseudocode basics
     theory_id: 8228
   - title: Complex constructions in pseudocode
     theory_id: 8233
+  - title: Introducing the first algorithm
+    theory_id: 10336
+  - title: The big O notation
+    theory_id: 4991
+  - title: Data structures
+    theory_id: 5161
   - title: Fixed-size array
     theory_id: 7255
   - title: Dynamic array
@@ -155,8 +157,6 @@ topics:
   1:
   - title: The concept of patterns
     theory_id: 3611
-  - title: Computer programming
-    theory_id: 8739
   - title: What are streams
     theory_id: 5533
   - title: Hierarchy of exceptions
@@ -238,19 +238,17 @@ topics:
     theory_id: 3555
   - title: Command
     theory_id: 7762
-  - title: Functional interfaces and lambda expressions
-    theory_id: 3601
   - title: Executors
     theory_id: 4895
   - title: Anonymous classes
     theory_id: 3564
+  - title: Functional interfaces and lambda expressions
+    theory_id: 3601
   3:
   - title: Decorator
     theory_id: 5216
   - title: Facade
     theory_id: 5527
-  - title: Method references
-    theory_id: 3620
   - title: The Collections Framework overview
     theory_id: 3624
   - title: List
@@ -259,12 +257,12 @@ topics:
     theory_id: 3575
   - title: Map
     theory_id: 3558
+  - title: Method references
+    theory_id: 3620
   - title: Standard functional interfaces
     theory_id: 3623
   - title: Function composition
     theory_id: 3580
-  - title: Currying
-    theory_id: 3579
   - title: Optional
     theory_id: 9699
   - title: Functional data processing with streams

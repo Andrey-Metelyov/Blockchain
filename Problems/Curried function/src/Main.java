@@ -7,7 +7,7 @@ class CurryProduct {
     public static int calc(int x, int y, int z) {
 
         IntFunction<IntFunction<IntFunction<Integer>>> f = // write your code here
-                a -> b -> c -> a + b * b + c * c * c;
+            a -> b -> c -> a + b * b + c * c * c;
         return f.apply(x).apply(y).apply(z);
     }
 

@@ -1,0 +1,22 @@
+<b>Counting clicks</b> <a class=right href="https://hyperskill.org/learn/step/2460">Open on JetBrains Academy</a>
+<br><br>
+<html>
+ <head></head>
+ <body>
+  <p>There is a <code class="language-java">LogEntry</code> class for monitoring user activity on your site. The class has three fields:</p> 
+  <ul> 
+   <li><strong><code class="language-java">created</code>: Date is</strong> the date of creating log entry;</li> 
+   <li><strong><code class="language-java">login</code>: String</strong> is a user login;</li> 
+   <li><strong><code class="language-java">url</code>: String</strong> is a url that the user clicked.</li> 
+  </ul> 
+  <p>The class have getters for all fields with the corresponding names (<code class="language-java">getCreated()</code>, <code class="language-java">getLogin()</code>, <code class="language-java">getUrl()</code>).<br> <br> Write a collector that calculates how many times each <code class="language-java">url</code> was clicked by users. The collector will be applied to a stream of log entries for creating a map: <strong>url</strong><strong> -&gt; click count</strong>.<br> <br> The class<strong> <code class="language-java">LogEntry</code> </strong>will be available during testing. You can create your own classes for local testing.</p> 
+  <p><strong>Important.</strong> You should write only the collector in <strong>any valid formats but without ; on the end.</strong></p> 
+  <p>It will be passed as an argument to the <code class="language-java">collect()</code> method of a stream as shown below.</p> 
+  <pre><code class="language-java">List&lt;LogEntry&gt; logs = ...
+Map&lt;String, Long&gt; clickCount = 
+        logs.stream()
+            .collect(...your_collector_will_be_passed_here...);</code></pre> 
+  <p><strong>Examples</strong> of the valid solution formats: <code class="language-java">Collectors.reducing(...)</code> or <strong><strong><code class="language-java">reducing(...)</code>.</strong></strong></p>
+ </body>
+</html><br><br><font color="gray">Memory limit: 256 MB</font><br><font color="gray">Time limit: 8 seconds</font><br><br>
+<a href="https://hyperskill.org/learn/step/3613">Show topic summary</a>

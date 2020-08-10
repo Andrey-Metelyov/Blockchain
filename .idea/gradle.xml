@@ -17,16 +17,26 @@
             <option value="$PROJECT_DIR$/Problems/An infinite numbers supplier" />
             <option value="$PROJECT_DIR$/Problems/Apply function to all elements" />
             <option value="$PROJECT_DIR$/Problems/Ascending and descending sorting" />
+            <option value="$PROJECT_DIR$/Problems/Calculating factorials" />
             <option value="$PROJECT_DIR$/Problems/Check whether a number is prime" />
             <option value="$PROJECT_DIR$/Problems/Composing predicates" />
+            <option value="$PROJECT_DIR$/Problems/Count words without repetitions" />
+            <option value="$PROJECT_DIR$/Problems/Counting clicks" />
             <option value="$PROJECT_DIR$/Problems/Curried function" />
+            <option value="$PROJECT_DIR$/Problems/Maximum of the absolute values" />
             <option value="$PROJECT_DIR$/Problems/Messaging" />
             <option value="$PROJECT_DIR$/Problems/Multifunctional mapper" />
+            <option value="$PROJECT_DIR$/Problems/Palindrome or not" />
+            <option value="$PROJECT_DIR$/Problems/Range quadratic sum" />
             <option value="$PROJECT_DIR$/Problems/Reducer operator" />
+            <option value="$PROJECT_DIR$/Problems/Sorting the absolute values" />
             <option value="$PROJECT_DIR$/Problems/String concatenation" />
+            <option value="$PROJECT_DIR$/Problems/Sum of divisors" />
             <option value="$PROJECT_DIR$/Problems/Ternary operator" />
             <option value="$PROJECT_DIR$/Problems/The address book" />
             <option value="$PROJECT_DIR$/Problems/The chain of responsibility" />
+            <option value="$PROJECT_DIR$/Problems/The product of squares" />
+            <option value="$PROJECT_DIR$/Problems/The total sum of transaction by each account" />
             <option value="$PROJECT_DIR$/Problems/Which brackets are balanced" />
             <option value="$PROJECT_DIR$/util" />
           </set>
