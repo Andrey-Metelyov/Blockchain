@@ -284,6 +284,138 @@ files:
         }
     }
   learner_created: true
+- name: src/blockchain/MessageSender.java
+  visible: true
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/50/stages/274/implement
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Error in test #2
+
+    In this test, the program is running for a long time, more than 15 seconds. Most likely, the program has gone into an infinite loop.
+
+    Please find below the output of your program during this failed test.
+
+    ---
+
+    Block:
+    Created by miner # 4
+    Id: 1
+    Timestamp: 1597128091417
+    Magic number: -3752199623969987876
+    Hash of the previous block:
+    0
+    Hash of the block:
+    0000018685c724192e2160c4a45c2c3f45da03e3640f6dc87130906bc6ffc9aa
+    Block data: no messages
+    Block was generating for 1 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 4
+    Id: 2
+    Timestamp: 1597128094941
+    Magic number: 4476021589619770849
+    Hash of the previous block:
+    0000018685c724192e2160c4a45c2c3f45da03e3640f6dc87130906bc6ffc9aa
+    Hash of the block:
+    00000ed071cc262b2906b08481591e41a3c594e830bd8cac76df6c9d28295c34
+    Block data:
+    Sarah: You always will be first because it is your blockchain!
+    Nick: You&#39;re welcome :)
+    Sarah: Anyway, thank you for this amazing chat.
+    Tom: Anyway, thank you for this amazing chat.
+    Sarah: It&#39;s not fair!
+    Tom: It&#39;s not fair!
+    Tom: Hey Tom, nice chat
+    Block was generating for 3 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 7
+    Id: 6
+    Timestamp: 1597128098416
+    Magic number: -2021843794379368328
+    Hash of the previous block:
+    000001a9f8486be539d89fc8ab1ae6ec98bb0db4dcd2a79990a6a44371edb151
+    Hash of the block:
+    000004c9104f3ec195638237778bde18e1b58bc2ae51336d2fc9cfcaaf804428
+    Block data:
+    Sarah: Anyway, thank you for this amazing chat.
+    Block was generating for 10 seconds
+    N was decreased by 1
+
+    Block:
+    Created by miner # 3
+    Id: 3
+    Timestamp: 1597128099672
+    Magic number: -4996537885918518157
+    Hash of the previous block:
+    00000ed071cc262b2906b08481591e41a3c594e830bd8cac76df6c9d28295c34
+    Hash of the block:
+    00000a55c728f4bc3e9ad7b13a0e4b800150d027c1d9bba7fe1a32ac5de6267d
+    Block data:
+    Tom: Hey, I&#39;m first!
+    Tom: You&#39;re welcome :)
+    Sarah: You&#39;re welcome :)
+    Nick: You always will be first because it is your blockchain!
+    Nick: Anyway, thank you for this amazing chat.
+    Tom: It&#39;s not fair!
+    Nick: It&#39;s not fair!
+    Sarah: Anyway, thank you for this amazing chat.
+    Nick: It&#39;s not fair!
+    Block was generating for 4 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 1
+    Id: 4
+    Timestamp: 1597128101844
+    Magic number: 3104056366107352339
+    Hash of the previous block:
+    00000a55c728f4bc3e9ad7b13a0e4b800150d027c1d9bba7fe1a32ac5de6267d
+    Hash of the block:
+    00000e766e5ee80d43d2ffc9567e508d3e52025f48e866da7500fa04504f341c
+    Block data:
+    Nick: Anyway, thank you for this amazing chat.
+    Nick: You&#39;re welcome :)
+    Nick: You always will be first because it is your blockchain!
+    Sarah: Hey Tom, nice chat
+    Block was generating for 2 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 3
+    Id: 5
+    Timestamp: 1597128104020
+    Magic number: -607116661596075708
+    Hash of the previous block:
+    00000e766e5ee80d43d2ffc9567e508d3e52025f48e866da7500fa04504f341c
+    Hash of the block:
+    000006c58559f131291b2cd4ea6949dd392f6fbacd27443dfae7a1f122b706e3
+    Block data:
+    Nick: Anyway, thank you for this amazing chat.
+    Tom: Hey Tom, nice chat
+    Nick: You always will be first because it is your blockchain!
+    Sarah: Hey Tom, nice chat
+    Sarah: You&#39;re welcome :)
+    Block was generating for 2 seconds
+    N stays the same
+
+    Block:
+    Created by miner # 3
+    Id: 6
+    Timestamp: 1597128104054
+    Magic number: -7110536114668879455
+    Hash of the previous block:
+    000006c58559f131291b2cd4ea6949dd392f6fbacd27443dfae7a1f122b706e3
+    Hash of the block:
+    0000089e36bb0894e58ff26bcd24c318b7526725b9857593f5ac8f0833ee57f5
+    Block data: no messages
+    Block was generating for 0 seconds
+    N was increased to 6
+
+    ----- SHUTDOWN!!! -----
+  time: Tue, 11 Aug 2020 06:41:46 UTC
 record: -1

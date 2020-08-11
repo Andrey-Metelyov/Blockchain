@@ -1,8 +1,6 @@
 package blockchain;
 
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.Random;
+import java.util.*;
 
 class Block {
     long id;
@@ -12,12 +10,12 @@ class Block {
     String hash;
     //        long generationTime;
     final Random random = new Random();
-//        String content;
+    List<String> messages;
 
-    Block(long id, int zeroesNeeded, String hashPrevious, String content) {
+    Block(long id, int zeroesNeeded, String hashPrevious) {
         this.id = id;
         this.hashPrevious = hashPrevious;
-//            this.content = content;
+//        this.messages = messages;
         this.hash = getHash(zeroesNeeded);
         this.timestamp = new Date().getTime();
 //            generationTime = new Date().getTime() - timestamp;
@@ -43,11 +41,16 @@ class Block {
 
     @Override
     public String toString() {
+        StringBuilder messages = new StringBuilder();
+        for (String message : this.messages) {
+            messages.append(message).append("\n");
+        }
         return "Id: " + id +
                 "\nTimestamp: " + timestamp +
                 "\nMagic number: " + magic +
                 "\nHash of the previous block:\n" + hashPrevious +
-                "\nHash of the block:\n" + hash;
+                "\nHash of the block:\n" + hash +
+                "\nBlock data:" + (messages.length() > 0 ? "\n" + messages : " no messages\n");
 //                    "\nBlock was generating for " + (generationTime / 1000) + " seconds" +
     }
 
@@ -58,14 +61,19 @@ class Block {
         }
         return counter;
     }
+
+    public void setMessages(List<String> messages) {
+        this.messages = List.copyOf(messages);
+    }
 }
 
 public class Blockchain {
     LinkedList<Block> blocks = new LinkedList<>();
-    int zeroesNeeded = 0;
+    List<String> messages = new ArrayList<>();
+    int zeroesNeeded = 5;
     long lastGenerationStartTimestamp;
 
-    public int size() {
+    synchronized public int size() {
         return blocks.size();
     }
 
@@ -102,19 +110,26 @@ public class Blockchain {
         return instance;
     }
 
+    synchronized void sendMessage(String message) {
+//        System.out.println("Send message: " + message);
+        messages.add(message);
+    }
+
     synchronized boolean addBlock(String miner, Block block) {
         if (getLashHash().equals(block.hashPrevious) && getZeroesNeeded() >= block.getHashZeroes()) {
             System.out.println("Block:");
             System.out.println("Created by miner # " + miner.substring(miner.length() - 1));
+            block.setMessages(messages);
+            messages.clear();
             blocks.add(block);
-            System.out.println(block.toString());
+            System.out.print(block.toString());
             long generationTime = block.timestamp - lastGenerationStartTimestamp;
             System.out.println("Block was generating for " + generationTime / 1000 + " seconds");
 //            System.out.println("Block was generating for " + generationTime + " ms");
-            if (generationTime < 15_000) {
+            if (generationTime < 1_000) {
                 zeroesNeeded++;
                 System.out.println("N was increased to " + zeroesNeeded);
-            } else if (generationTime > 60_000) {
+            } else if (generationTime > 5_000) {
                 zeroesNeeded--;
                 System.out.println("N was decreased by 1");
             } else {
