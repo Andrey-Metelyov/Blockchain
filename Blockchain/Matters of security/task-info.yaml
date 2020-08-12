@@ -244,6 +244,93 @@ files:
         }
     }
   learner_created: false
+- name: src/blockchain/StringUtil.java
+  visible: true
+  text: |-
+    package blockchain;
+
+    import java.security.MessageDigest;
+
+    class StringUtil {
+        /* Applies Sha256 to a string and returns a hash. */
+        public static String applySha256(String input){
+            try {
+                MessageDigest digest = MessageDigest.getInstance("SHA-256");
+                /* Applies sha256 to our input */
+                byte[] hash = digest.digest(input.getBytes("UTF-8"));
+                StringBuilder hexString = new StringBuilder();
+                for (byte elem: hash) {
+                    String hex = Integer.toHexString(0xff & elem);
+                    if(hex.length() == 1) hexString.append('0');
+                    hexString.append(hex);
+                }
+                return hexString.toString();
+            }
+            catch(Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+  learner_created: true
+- name: src/blockchain/BlockchainUtil.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.util.Collections;
+    import java.util.List;
+
+    public class BlockchainUtil {
+        public static Block generate(long id, String prevHash, int zeroesNeeded) {
+    //        System.out.println("start generating block: id=" + id + " prevHash=" + prevHash + " zeroes needed=" + zeroesNeeded);
+            return new Block(id, zeroesNeeded, prevHash);
+        }
+    }
+  learner_created: true
+- name: src/blockchain/MessageSender.java
+  visible: true
+  text: |
+    package blockchain;
+
+    import java.util.Random;
+
+    public class MessageSender implements Runnable {
+        MessageSender() {
+        }
+
+        @Override
+        public void run() {
+            Blockchain blockchain = Blockchain.getInstance();
+            while (true) {
+                blockchain.sendMessage(generateMessage());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+    //                e.printStackTrace();
+                    break;
+                }
+            }
+        }
+
+        private String generateMessage() {
+            String[] names = {"Tom", "Sarah", "Nick"};
+            String[] messages = {
+                    "Hey, I'm first!",
+                    "It's not fair!",
+                    "You always will be first because it is your blockchain!",
+                    "Anyway, thank you for this amazing chat.",
+                    "You're welcome :)",
+                    "Hey Tom, nice chat"
+            };
+            Random random = new Random();
+            return names[random.nextInt(names.length)] + ": " + messages[random.nextInt(messages.length)];
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/50/stages/275/implement
-status: Unchecked
-record: -1
+status: Solved
+feedback:
+  message: Congratulations! Continue on <a href="https://hyperskill.org/projects/50/stages/275/implement">JetBrains
+    Academy</a>
+  time: Wed, 12 Aug 2020 03:51:11 UTC
+record: 5

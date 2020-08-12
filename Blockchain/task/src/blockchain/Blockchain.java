@@ -70,7 +70,7 @@ class Block {
 public class Blockchain {
     LinkedList<Block> blocks = new LinkedList<>();
     List<String> messages = new ArrayList<>();
-    int zeroesNeeded = 5;
+    int zeroesNeeded = 0;
     long lastGenerationStartTimestamp;
 
     synchronized public int size() {
@@ -117,25 +117,38 @@ public class Blockchain {
 
     synchronized boolean addBlock(String miner, Block block) {
         if (getLashHash().equals(block.hashPrevious) && getZeroesNeeded() >= block.getHashZeroes()) {
-            System.out.println("Block:");
-            System.out.println("Created by miner # " + miner.substring(miner.length() - 1));
+            StringBuilder blockDesc = new StringBuilder();
+//            System.out.println("Block:");
+            blockDesc.append("Block:\n");
+            miner = "miner" + miner.substring(miner.length() - 1);
+//            System.out.println("Created by " + miner);
+            blockDesc.append("Created by " + miner + "\n");
+//            System.out.println(miner + " gets 100 VC");
+            blockDesc.append(miner + " gets 100 VC\n");
             block.setMessages(messages);
             messages.clear();
             blocks.add(block);
-            System.out.print(block.toString());
+//            System.out.print(block.toString());
+            blockDesc.append(block.toString());
             long generationTime = block.timestamp - lastGenerationStartTimestamp;
-            System.out.println("Block was generating for " + generationTime / 1000 + " seconds");
+//            System.out.println("Block was generating for " + generationTime / 1000 + " seconds");
+            blockDesc.append("Block was generating for " + generationTime / 1000 + " seconds\n");
 //            System.out.println("Block was generating for " + generationTime + " ms");
-            if (generationTime < 1_000) {
+            if (generationTime < 100) {
                 zeroesNeeded++;
-                System.out.println("N was increased to " + zeroesNeeded);
-            } else if (generationTime > 5_000) {
+//                System.out.println("N was increased to " + zeroesNeeded);
+                blockDesc.append("N was increased to " + zeroesNeeded + "\n");
+            } else if (generationTime > 400) {
                 zeroesNeeded--;
-                System.out.println("N was decreased by 1");
+//                System.out.println("N was decreased by 1");
+                blockDesc.append("N was decreased by 1\n");
             } else {
-                System.out.println("N stays the same");
+//                System.out.println("N stays the same");
+                blockDesc.append("N stays the same\n");
             }
-            System.out.println();
+            if (block.id <= 15) {
+                System.out.println(blockDesc.toString() + "\n");
+            }
             lastGenerationStartTimestamp = 0;
             return true;
         } else {
@@ -179,12 +192,19 @@ class BlockGenerator implements Runnable {
     public void run() {
         String miner = Thread.currentThread().getName();
         Blockchain blockchain = Blockchain.getInstance();
-        Blockchain.BlockParameters parameters = blockchain.getNextBlockParameters();
-//        System.out.println("start generation " + miner + " id=" + parameters.id + " prevHash=" + parameters.prevHash + " zeroesNeeded=" + parameters.zeroesNeeded);
-        Block block = BlockchainUtil.generate(parameters.id, parameters.prevHash, parameters.zeroesNeeded);
-        if (blockchain.addBlock(miner, block)) {
-
+        while (true) {
+            Blockchain.BlockParameters parameters = blockchain.getNextBlockParameters();
+            //        System.out.println("start generation " + miner + " id=" + parameters.id + " prevHash=" + parameters.prevHash + " zeroesNeeded=" + parameters.zeroesNeeded);
+            Block block = BlockchainUtil.generate(parameters.id, parameters.prevHash, parameters.zeroesNeeded);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+//                e.printStackTrace();
+                break;
+            }
+            if (blockchain.addBlock(miner, block)) {
+                // block accepted
+            }
         }
-//        System.out.println("end generation " + miner);
     }
 }

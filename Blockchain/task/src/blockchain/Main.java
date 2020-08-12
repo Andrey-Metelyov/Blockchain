@@ -10,20 +10,18 @@ public class Main {
         int poolSize = Runtime.getRuntime().availableProcessors();
         ExecutorService executor = Executors.newFixedThreadPool(poolSize);
         ExecutorService sender = Executors.newFixedThreadPool(poolSize);
+        for (int i = 0; i < poolSize; i++) {
+            executor.submit(new BlockGenerator());
+        }
+        sender.submit(new MessageSender());
         do {
-            for (int i = 0; i < poolSize; i++) {
-                executor.submit(new BlockGenerator());
-            }
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            if (blockchain.size() > 0) {
-                sender.submit(new MessageSender());
-            }
-        } while (blockchain.size() < 5);
-        System.out.println("----- SHUTDOWN!!! -----");
+        } while (blockchain.size() < 15);
+//        System.out.println("----- SHUTDOWN!!! -----");
         try {
             executor.shutdownNow();
             sender.shutdownNow();
@@ -32,7 +30,7 @@ public class Main {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        executor.shutdownNow();
-        System.out.println("----- SHUTDOWN DONE!!! -----");
+//        executor.shutdownNow();
+//        System.out.println("----- SHUTDOWN DONE!!! -----");
     }
 }

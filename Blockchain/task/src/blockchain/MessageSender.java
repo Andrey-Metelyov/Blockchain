@@ -3,16 +3,20 @@ package blockchain;
 import java.util.Random;
 
 public class MessageSender implements Runnable {
-    MessageSender() {}
+    MessageSender() {
+    }
 
     @Override
     public void run() {
         Blockchain blockchain = Blockchain.getInstance();
-        blockchain.sendMessage(generateMessage());
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            blockchain.sendMessage(generateMessage());
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+//                e.printStackTrace();
+                break;
+            }
         }
     }
 
